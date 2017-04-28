@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/SamuelMarks/cust_typings/master/citeproc/citeproc.d.ts",
+    "raw": "github:SamuelMarks/cust_typings/citeproc/citeproc.d.ts",
+    "typings": "https://raw.githubusercontent.com/SamuelMarks/cust_typings/master/citeproc/citeproc.d.ts"
+  }
+}

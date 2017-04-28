@@ -2,5 +2,11 @@
   "name": "ionic-app",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "browser": false,
+  "open_browser": false
 }
