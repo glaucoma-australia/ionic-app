@@ -10,6 +10,7 @@ import { IRiskStats, IRiskStatsBase } from './risk-stats';
 @Injectable()
 export class RiskStatsService {
   private req_options: RequestOptions;
+  private api_base: string = window['cordova'] ? 'https://glaucoma-australia.complicated.io' : '';
   public risk_stats: {};
   public risk;
 
@@ -28,13 +29,13 @@ export class RiskStatsService {
 
   create(risk_stats: IRiskStatsBase): Observable<IRiskStats> {
     this.setReqOptions();
-    return this.http.post('/api/risk_stats', JSON.stringify(risk_stats), this.req_options)
+    return this.http.post(`${this.api_base}/api/risk_stats`, JSON.stringify(risk_stats), this.req_options)
       .map((r: Response) => r.json() as IRiskStats)
       .catch(handleError)
   }
 
   read(createdAt: string | 'latest' | Date): Observable<IRiskStats> {
-    return this.http.get(`/api/risk_stats/${createdAt}`, new RequestOptions({
+    return this.http.get(`${this.api_base}/api/risk_stats/${createdAt}`, new RequestOptions({
       headers: new Headers({
         'Accept': 'application/json'
       })
@@ -45,14 +46,14 @@ export class RiskStatsService {
 
   update(prevRecord: IRiskStats, newRecord: IRiskStatsBase): Observable<IRiskStats> {
     this.setReqOptions();
-    return this.http.put(`/api/risk_stats/${prevRecord.createdAt}`, JSON.stringify(newRecord), this.req_options)
+    return this.http.put(`${this.api_base}/api/risk_stats/${prevRecord.createdAt}`, JSON.stringify(newRecord), this.req_options)
       .map((r: Response) => r.json() as IRiskStats)
       .catch(handleError)
   }
 
   destroy(createdAt: string | Date): Observable<{}> {
     this.setReqOptions();
-    return this.http.delete(`/api/risk_stats/${createdAt}`, this.req_options)
+    return this.http.delete(`${this.api_base}/api/risk_stats/${createdAt}`, this.req_options)
       .map((r: Response) => r.status === 204 ? Object.freeze({}) : Observable.throw(
         new AssertionError(`Expected status of 204, got ${r.status}`)))
       .catch(handleError)

@@ -3,10 +3,12 @@
   "app_id": "",
   "v2": true,
   "typescript": true,
-  "/api": {
-    "target": "http://localhost:3000",
-    "secure": false
-  },
   "browser": false,
-  "open_browser": false
+  "open_browser": false,
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:4200"
+    }
+  ]
 }

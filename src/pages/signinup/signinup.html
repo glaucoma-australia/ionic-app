@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>end-blindness &mdash; signin/up</ion-title>
+    <ion-title>{{api_version}} end-blindness &mdash; signin/up</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -19,6 +19,11 @@
     </ion-item>
 
   </ion-list>
+
+  <div padding>
+    <p>content = {{content}}</p>
+    <p>api_base = {{api_base}}</p>
+  </div>
 
   <div padding>
     <button ion-button color="primary" block (click)="signInUp()">Sign in/up</button>
